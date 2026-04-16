@@ -1,0 +1,133 @@
+<footer>
+  <div class="footer-container">
+    
+    <div class="footer-col">
+      <h3>Kontakt</h3>
+      <p><strong>Mail:</strong> info@agoodcase.dk</p>
+      <p><strong>Tlf:</strong> +45 30 45 99 90</p>
+      <p class="small-text">Ved spørgsmål angående din ordre, se vores <a href="#">FAQ</a> før du kontakter os.</p>
+
+      <h3 class="space-top">Virksomhedsadresse:</h3>
+      <p>A Good Case Aps</p>
+      <p>Vallensbækvej 55</p>
+      <p>2605 Brøndby</p>
+      <p><strong>CVR-nr</strong> 41440031</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Links</h3>
+      <nav>
+        <a href="#">Om os</a>
+        <a href="#">Handelsbetingelser</a>
+        <a href="#">Persondatapolitik</a>
+        <a href="#">Levering og prisgaranti</a>
+        <a href="#">Partnerskaber</a>
+        <a href="#">Lagersalg</a>
+        <a href="#">MitId aldersverificering</a>
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <h3>Nyhedsbrev</h3>
+      <p>Få en masse gode tilbud specielt til dig på mail.</p>
+      
+      <div class="newsletter-form">
+        <input type="email" placeholder="E-mail" />
+        <button type="submit">Tilmeld</button>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: #1a3d2f; /* Den mørkegrønne farve fra dit billede */
+    color: white;
+    padding: 80px 40px;
+    font-family: sans-serif;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+  }
+
+  .footer-col {
+    flex: 1;
+  }
+
+  /* Overskrifter */
+  h3 {
+    font-family: 'Bebas Neue', sans-serif; /* Eller en anden stærk font */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .space-top {
+    margin-top: 40px;
+  }
+
+  /* Tekst og links */
+  p, a {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 5px 0;
+    color: #e0e0e0;
+    text-decoration: none;
+  }
+
+  nav a {
+    display: block; /* Lægger links under hinanden */
+    margin-bottom: 10px;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  .small-text {
+    font-size: 0.9rem;
+    margin-top: 15px;
+  }
+
+  /* Nyhedsbrev styling */
+  .newsletter-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    color: white;
+    width: 100%;
+  }
+
+  input::placeholder {
+    color: #ccc;
+  }
+
+  button {
+    background-color: transparent;
+    border: 1px solid #5a7a60;
+    color: #9caf9e;
+    padding: 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 150px; /* Knappen er ikke fuld bredde på billedet */
+    align-self: flex-start;
+  }
+
+  button:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+</style>
