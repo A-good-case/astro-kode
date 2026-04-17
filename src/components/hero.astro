@@ -1,0 +1,35 @@
+---
+---
+<section class="hero">
+  <div class="hero-content">
+    <h1>Mission:<br>Less Waste<br>Great Taste</h1>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/hero-picture.webp');
+    background-size: cover;
+    background-position: center;
+    height: 80vh; /* Fylder 80% af skærmens højde */
+    display: flex;
+    align-items: center; /* Centrerer tekst vertikalt */
+    padding: 0 10%; /* Skaber luft i siderne */
+    color: white;
+  }
+
+  .hero-content h1 {
+    font-family: 'Bebas Neue', sans-serif; /* Din fede overskriftsfont */
+    font-size: clamp(3rem, 8vw, 6rem); /* Gør teksten responsiv */
+    line-height: 0.9;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    max-width: 400px;
+    margin-top: 1rem;
+    font-weight: 300;
+  }
+</style>

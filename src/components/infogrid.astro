@@ -1,0 +1,71 @@
+---
+import Button from './button.astro';
+---
+
+<section class="info-section">
+  <article class="info-box" style="background-image: url('/oel-smagning.webp');">
+    <div class="content">
+      <h3>Ølsmagning</h3>
+      <p>Book en unik oplevelse med vores eksperter.</p>
+      <Button text="Læs mere" link="/smagning" />
+    </div>
+  </article>
+
+  <article class="info-box" style="background-image: url('/abonnement-klokke.webp');">
+    <div class="content">
+      <h3>Abonnement</h3>
+      <p>Friske varer leveret direkte til døren.</p>
+      <Button text="Se pakker" link="/abonnement" />
+    </div>
+  </article>
+
+  <article class="info-box" style="background-image: url('/social-responsibilty.webp');">
+    <div class="content">
+      <h3>Socialt ansvar</h3>
+      <p>Læs om vores arbejde.</p>
+      <Button text="Læs mere" link="/ansvar" />
+    </div>
+  </article>
+
+  <article class="info-box" style="background-image: url('/enviroment.webp');">
+    <div class="content">
+      <h3>Klima ansvar</h3>
+      <p>Vi passer på naturen.</p>
+      <Button text="Læs mere" link="/klima" />
+    </div>
+  </article>
+</section>
+
+<style>
+  /* Grid med 2 kolonner og 2 rækker */
+  .info-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+
+  /* Alle kasser er ens */
+  .info-box {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    color: white;
+    aspect-ratio: 1;
+  }
+
+  /* Tekst styling */
+  .content {
+    padding: 20px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  h3 { margin: 0; font-size: 24px; }
+  p { margin: 10px 0; }
+</style>
