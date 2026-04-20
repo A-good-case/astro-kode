@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+const endpoint= "https://iwbvbapklibbvvbvkycl.supabase.co/rest/v1/a-good-case?select=*";
+const key="sb_publishable_a_arvnmYGQIdHssKGJ0i8A_ggJVCbCi";
+const options={
+    headers:{
+        apikey: "sb_publishable_a_arvnmYGQIdHssKGJ0i8A_ggJVCbCi"
+    }
+}
+const data = await fetch(endpoint, options).then((response) => response.json());
+console.log(data);
+---
+
+<Layout>
+    <section class="product-page">
+  <h1>Specialøl</h1>
+
+  <div class="filter-bar">
+    <select><option>Sortering</option></select>
+    <select><option>Type</option></select>
+    <select><option>Stil</option></select>
+    <select><option>Pris</option></select>
+  </div>
+
+  <div class="product-grid">
+      {data.map((product: any) => (
+        <ProductCard
+          navn={product.name}
+          bryggeri={product.category}
+          pris={product.price}
+          billede_url={product.image}
+        />
+      ))}
+    </div>
+</section>
+</Layout>
+
+
+
+
+
+<style>
+  .product-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  h1 { font-family: sans-serif; font-size: 3rem; margin-bottom: 30px; }
+
+  .filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+  }
+
+  select {
+    padding: 10px;
+    border: 1px solid #333;
+    min-width: 160px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Låst til 3 som prototypen */
+    gap: 60px 20px;
+  }
+
+  .image-container {
+    background-color: #f5f5f5;
+    aspect-ratio: 1 / 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  img { max-height: 80%; object-fit: contain; }
+
+  h3 { font-size: 1rem; text-transform: uppercase; margin: 0; }
+  .brewery { color: #666; font-size: 0.9rem; margin: 5px 0; }
+  .price { font-weight: bold; }
+</style>

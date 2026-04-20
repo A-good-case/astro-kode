@@ -1,0 +1,68 @@
+---
+// Vi definerer de props, som komponenten skal modtage fra sit parent (ProductList)
+const { navn, bryggeri, pris, billede_url } = Astro.props;
+---
+
+<article class="product-card">
+  <div class="image-container">
+    <img src={billede_url} alt={navn} />
+  </div>
+  
+  <div class="product-info">
+    <h3>{navn}</h3>
+    <p class="brewery">{bryggeri}</p>
+    <p class="price">{pris} kr</p>
+  </div>
+</article>
+
+<style>
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none; /* Hvis du senere gør hele kortet til et link */
+    color: inherit;
+  }
+
+  .image-container {
+    background-color: #f5f5f5; /* Den lysegrå baggrund fra din prototype */
+    aspect-ratio: 1 / 1.2; /* Giver den rette rektangulære form til flasker */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    padding: 20px;
+  }
+
+  img { 
+    max-height: 100%; 
+    max-width: 100%;
+    object-fit: contain; /* Sørger for at flasken ikke bliver strakt */
+  }
+
+  h3 { 
+    font-size: 1rem; 
+    text-transform: uppercase; 
+    margin: 0; 
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .brewery { 
+    color: #666; 
+    font-size: 0.9rem; 
+    margin: 5px 0; 
+  }
+
+  .price { 
+    font-weight: 800; 
+    font-size: 1.1rem;
+    margin-top: 5px;
+    color: #000;
+  }
+
+  /* Lille hover-effekt gør det altid lidt lækrere */
+  .product-card:hover .image-container {
+    background-color: #ededed;
+  }
+</style>
