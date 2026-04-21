@@ -9,7 +9,6 @@ Sitet består af flere sider, hvor brugeren kan:
 
 - se en liste med indhold
 - klikke sig videre til en detaljeside
-- bruge filtrering
 
 ## Links
 
@@ -50,7 +49,7 @@ Astro-kode/
 
 ---
 
-**Flow:**!!!!!
+**Flow:**
 
 1. Siden indlæses.
 
@@ -60,25 +59,27 @@ Astro-kode/
 
 4. Produktets detaljer (pris, beskrivelse, billede osv.) indsættes dynamisk i DOM'en.
 
-5. Brugeren præsenteres for den uddybende produktinformation.
+5. Brugeren præsenteres for den uddybende produktinformation på productdetails.
 
 ---
 
 Navngivning
 Vi har navngivet vores filer, variabler og funktioner, så de er så selvforklarende som muligt. Dette gør det lettere for alle i gruppen at læse og forstå koden.
 
+Vi har også skrevet navngivet det meste på engelsk for at undgå eventuelle problemer med fillæsning.
+
 Eksempler på variabler
 
 ### Eksempler på variabler
 
-```javascript
-
+```
+***
 ```
 
 ### Eksempler på funktioner
 
-```javascript
-
+```
+***
 ```
 
 Vi har brugt camelCase i JavaScript, fordi det gør koden mere ensartet og lettere at læse.
@@ -90,8 +91,6 @@ Vi har brugt camelCase i JavaScript, fordi det gør koden mere ensartet og lette
 Vi har kommenteret de steder i koden, hvor det giver mening.
 Fx ved funktioner, fetch-kald og steder hvor der sker DOM-manipulation.
 
-**Eksempel:**
-
 ---
 
 ## Data og JSON-struktur
@@ -100,12 +99,9 @@ Vi henter data fra et API i JSON-format.
 
 **Et objekt kan fx se sådan ud:**
 
-```json!!
-
-
 ```
-
-### Felter vi bruger
+***
+```
 
 ## Git og branches
 
@@ -117,8 +113,10 @@ Vi navngav branchene med feature.
 
 ### Eksempler på branches
 
-- `index`
-- ``
+```
+ "index"
+ "Teknisk dokumentation"
+```
 
 ### Workflow
 
@@ -149,7 +147,7 @@ Vi har tænkt bæredygtighed ind i projektet.
 
 ## Mulige forbedringer
 
-Hvis vi skulle arbejde videre med projektet, kunne vi forbedre det ved at tilføje:
+---
 
 ---
 
