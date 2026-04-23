@@ -24,18 +24,20 @@ console.log(data);
 </select>
 </div>
 
-  <div class="product-grid" id="productGrid">
-  {data.map((product: any) => (
-    <div class="product-wrapper" data-price={product.price}>
-      <ProductCard
-        navn={product.name}
-        bryggeri={product.category}
-        pris={product.price}
-        billede_url={product.image}
-      />
+  
+  <div class="product-grid">
+      {data.map((product: any) => (
+        <a href={`/details/${product.id}`}>
+        <ProductCard
+          navn={product.name}
+          bryggeri={product.category}
+          pris={product.price}
+          billede_url={product.image}
+        />
+        </a>
+      ))}
     </div>
-  ))}
-</div>
+   
 </section>
 </Layout>
 
@@ -45,6 +47,8 @@ console.log(data);
     margin: 0 auto;
     padding: 60px 20px;
   }
+
+a { text-decoration: none; color: inherit; }
 
   h1 { font-family: sans-serif; font-size: 3rem; margin-bottom: 30px; }
 
