@@ -1,5 +1,19 @@
 ---
 import Button from './button.astro';
+import ProductCard from './ProductCard.astro'; // Vi genbruger din komponent!
+
+const endpoint = "https://iwbvbapklibbvvbvkycl.supabase.co/rest/v1/a-good-case?select=*";
+const options = {
+    headers: {
+        apikey: "sb_publishable_a_arvnmYGQIdHssKGJ0i8A_ggJVCbCi"
+    }
+}
+
+// 1. Hent alle data
+const data = await fetch(endpoint, options).then((response) => response.json());
+
+// 2. Skær listen ned til de første 3 (Månedens udvalgte)
+const udvalgte = data.slice(0, 3);
 ---
 
 <section class="featured">
@@ -7,46 +21,14 @@ import Button from './button.astro';
     <h2>Månedens udvalgte</h2>
 
     <div class="product-grid">
-      <article class="product-card">
-        <div class="image-bg gray">
-          <img
-            src="/beer-bottle.webp"
-            alt="Brains SA Gold"
-            class="product-image"
-          />
-        </div>
-        <div class="product-info">
-          <h3>BRAINS SA GOLD</h3>
-          <p>Amerikansk bryggeri</p>
-          <span class="price">14 kr</span>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="image-bg dark">
-          <img
-            src="/beer-bottle.webp"
-            alt="Tyskie Gronie"
-            class="product-image"
-          />
-        </div>
-        <div class="product-info">
-          <h3>TYSKIE GRONIE</h3>
-          <p>Europæisk bryggeri</p>
-          <span class="price">15 kr</span>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="image-bg white">
-          <img src="/beer-bottle.webp" alt="Beer" class="product-image" />
-        </div>
-        <div class="product-info">
-          <h3>BEER</h3>
-          <p>Plain bryggeri</p>
-          <span class="price">16 kr</span>
-        </div>
-      </article>
+      {udvalgte.map((product: any) => (
+        <ProductCard
+          navn={product.name}
+          bryggeri={product.category}
+          pris={product.price}
+          billede_url={product.image}
+        />
+      ))}
     </div>
 
     <div class="button-container">
@@ -56,34 +38,23 @@ import Button from './button.astro';
 </section>
 
 <style>
-  /* Tilføj denne styling i din eksisterende <style> sektion 
-     for at sikre at billederne passer perfekt ind i boksene */
-  .product-image {
-    max-width: 100%;
-    object-fit: contain;
-    display: block;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 20px;
   }
 
   .product-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
-  }
-  .product-info h3 {
-    font-size: 1.1rem;
-    margin: 10px 0 5px 0;
-    font-weight: bold;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center; 
+    margin-bottom: 40px;
   }
 
   h2 {
-    /* Font-indstillinger */
-    font-family: 'Bebas Neue', sans-serif; /* Sørg for at denne er importeret i Layout */
-    font-size: 5rem;      /* Gør den rigtig stor som i Figma */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
     font-weight: 400;
     letter-spacing: 2px;  /* Giver lidt luft mellem de store bogstaver */
     text-transform: uppercase;}

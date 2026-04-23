@@ -17,28 +17,29 @@ console.log(data);
   <h1>Specialøl</h1>
 
   <div class="filter-bar">
-    <select><option>Sortering</option></select>
-    <select><option>Type</option></select>
-    <select><option>Stil</option></select>
-    <select><option>Pris</option></select>
-  </div>
+  <select id="sortPrice">
+  <option value="default">Sortér efter pris</option>
+  <option value="low">Pris: Lav til Høj</option>
+  <option value="high">Pris: Høj til Lav</option>
+</select>
+</div>
 
+  
   <div class="product-grid">
       {data.map((product: any) => (
+        <a href={`/details/${product.id}`}>
         <ProductCard
           navn={product.name}
           bryggeri={product.category}
           pris={product.price}
           billede_url={product.image}
         />
+        </a>
       ))}
     </div>
+   
 </section>
 </Layout>
-
-
-
-
 
 <style>
   .product-page {
@@ -46,6 +47,8 @@ console.log(data);
     margin: 0 auto;
     padding: 60px 20px;
   }
+
+a { text-decoration: none; color: inherit; }
 
   h1 { font-family: sans-serif; font-size: 3rem; margin-bottom: 30px; }
 
@@ -82,3 +85,37 @@ console.log(data);
   .brewery { color: #666; font-size: 0.9rem; margin: 5px 0; }
   .price { font-weight: bold; }
 </style>
+
+<script>
+  // Finder min dropdown menu i HTML'en og siger til TS det er en select
+  const sortSelect = document.querySelector("#sortPrice") as HTMLSelectElement;
+  // Finder selve grid'et hvor alle øllene bor
+  const grid = document.querySelector("#productGrid") as HTMLElement;
+  
+  // Tjekker lige at begge ting findes før jeg gør noget
+  if (sortSelect && grid) {
+    // Laver en liste (array) af alle mine produkt-kasser så de kan sorteres
+    const cards = Array.from(document.querySelectorAll(".product-wrapper")) as HTMLElement[];
+
+    // Holder øje med hvornår jeg vælger noget i menuen
+    sortSelect.addEventListener("change", (e) => {
+      // Finder ud af hvad jeg lige har valgt (fx "low")
+      const target = e.target as HTMLSelectElement;
+      const value = target.value;
+
+      // Hvis jeg vælger lav til høj
+      if (value === "low") {
+        // Sorterer kasserne ved at kigge på deres data-price og trække dem fra hinanden
+        cards.sort((a, b) => Number(a.dataset.price) - Number(b.dataset.price));
+      } 
+      // Hvis jeg vælger høj til lav
+      else if (value === "high") {
+        // Samme her, bare omvendt rækkefølge
+        cards.sort((a, b) => Number(b.dataset.price) - Number(a.dataset.price));
+      }
+
+      // Løber alle kasserne igennem og smider dem ind i grid'et i den nye rækkefølge
+      cards.forEach(card => grid.appendChild(card));
+    });
+  }
+</script>

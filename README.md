@@ -13,7 +13,7 @@ Sitet består af flere sider, hvor brugeren kan:
 ## Links
 
 - GitHub repository: [https://github.com/A-good-case/astro-kode]
-- Netlify link: []
+- Netlify link: [https://agoodcaseprojekt.netlify.app/]
 - Figma: [https://www.figma.com/design/hLchNMK4Xjs8yALe4gdsPU/A-good-case?m=auto&t=cEvGFVv7HI2vtIBL-6]
 - Trello: [https://trello.com/b/07dF6W8A/tema-9-a-good-case]
 
@@ -73,16 +73,16 @@ Eksempler på variabler
 ### Eksempler på variabler
 
 ```
-***
+"data"
+"product"
 ```
 
 ### Eksempler på funktioner
 
 ```
-***
+"Fetch"
+"Map"
 ```
-
-Vi har brugt camelCase i JavaScript, fordi det gør koden mere ensartet og lettere at læse.
 
 ---
 
@@ -100,7 +100,17 @@ Vi henter data fra et API i JSON-format.
 **Et objekt kan fx se sådan ud:**
 
 ```
-***
+id: 19,
+    created_at: '2026-04-17T09:04:00.570214+00:00',
+    name: "Brew York - Giants' Wrath",
+    price: 46,
+    image: 'https://cdn.shopify.com/s/files/1/0402/1239/8243/files/Brewyork_GiantsWrath.png?v=1774283244',
+    description: "Giants' Wrath er en cremet og frugtig Milkshake IPA brygget med guava, vanilje og laktose. Smagen er fyldt med tropisk sødme fra guava, som balanceres af en blød vaniljeprofil og en rund, næsten dessertagtig mundfølelse. En let bitterhed fra humlen giver modspil og holder øllen frisk, mens den afslutter saftigt og fyldigt. En intens og blød IPA med masser af karakter.",
+    category: 'Milkshake IPA',
+    reason: 'Kort dato',
+    bestbefore: '1/6-26',
+    percentage: 5.5
+  ,
 ```
 
 ## Git og branches
@@ -128,28 +138,9 @@ Vi navngav branchene med feature.
 
 Det gjorde det nemmere at holde styr på, hvem der lavede hvad.
 
----
-
-## Bæredygtighed
-
-Vi har tænkt bæredygtighed ind i projektet.
-
-**Tiltag:**
-
-- Ingen videoer
-- Genbruge af kode
-
----
-
 ## Udfordringer undervejs
 
----
-
-## Mulige forbedringer
-
----
-
----
+Den største udfordring var at få hul igennem til databasen, da den til at starte med var låst af RLS. Det krævede også lidt at få koden tilpasset, hvilke informationer fra databasen der hørte til de forskellige pladser i designet. Ved at fejlfinde trin for trin lykkedes det dog at få både navne, priser og billeder til at dukke op de rigtige steder.
 
 ## Gruppemedlemmer
 
