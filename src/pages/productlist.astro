@@ -11,110 +11,73 @@ const options={
 const data = await fetch(endpoint, options).then((response) => response.json());
 console.log(data);
 ---
-
 <Layout>
     <section class="product-page">
   <h1>Specialøl</h1>
-
   <div class="filter-bar">
-  <select id="sortPrice">
-  <option value="default">Sortér efter pris</option>
-  <option value="low">Pris: Lav til Høj</option>
-  <option value="high">Pris: Høj til Lav</option>
-</select>
-</div>
-
-  
-  <div class="product-grid">
+    <select id="sortPrice">
+      <option value="default">Featured</option>
+      <option value="low">Pris: Lav til Høj</option>
+      <option value="high">Pris: Høj til Lav</option>
+    </select>
+  </div>
+  <div class="product-grid" id="productGrid">
       {data.map((product: any) => (
-        <a href={`/details/${product.id}`}>
-        <ProductCard
-          navn={product.name}
-          bryggeri={product.category}
-          pris={product.price}
-          billede_url={product.image}
-        />
+        <a class="product-link" href={`/details/${product.id}`} data-price={product.price} data-id={product.id}>
+          <ProductCard
+            navn={product.name}
+            bryggeri={product.category}
+            pris={product.price}
+            billede_url={product.image}
+          />
         </a>
       ))}
     </div>
-   
 </section>
 </Layout>
-
 <style>
   .product-page {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
   }
-
-a { text-decoration: none; color: inherit; }
-
+  a { text-decoration: none; color: inherit; }
   h1 { font-family: sans-serif; font-size: 3rem; margin-bottom: 30px; }
-
   .filter-bar {
     display: flex;
     gap: 15px;
     margin-bottom: 50px;
   }
-
   select {
     padding: 10px;
     border: 1px solid #333;
     min-width: 160px;
   }
-
   .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Låst til 3 som prototypen */
+    grid-template-columns: repeat(3, 1fr);
     gap: 60px 20px;
   }
-
-  .image-container {
-    background-color: #f5f5f5;
-    aspect-ratio: 1 / 1.2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-
-  img { max-height: 80%; object-fit: contain; }
-
-  h3 { font-size: 1rem; text-transform: uppercase; margin: 0; }
-  .brewery { color: #666; font-size: 0.9rem; margin: 5px 0; }
-  .price { font-weight: bold; }
 </style>
-
 <script>
-  // Finder min dropdown menu i HTML'en og siger til TS det er en select
   const sortSelect = document.querySelector("#sortPrice") as HTMLSelectElement;
-  // Finder selve grid'et hvor alle øllene bor
   const grid = document.querySelector("#productGrid") as HTMLElement;
-  
-  // Tjekker lige at begge ting findes før jeg gør noget
-  if (sortSelect && grid) {
-    // Laver en liste (array) af alle mine produkt-kasser så de kan sorteres
-    const cards = Array.from(document.querySelectorAll(".product-wrapper")) as HTMLElement[];
 
-    // Holder øje med hvornår jeg vælger noget i menuen
+  if (sortSelect && grid) {
+    const cards = Array.from(document.querySelectorAll(".product-link")) as HTMLAnchorElement[];
+
     sortSelect.addEventListener("change", (e) => {
-      // Finder ud af hvad jeg lige har valgt (fx "low")
       const target = e.target as HTMLSelectElement;
       const value = target.value;
 
-      // Hvis jeg vælger lav til høj
       if (value === "low") {
-        // Sorterer kasserne ved at kigge på deres data-price og trække dem fra hinanden
         cards.sort((a, b) => Number(a.dataset.price) - Number(b.dataset.price));
-      } 
-      // Hvis jeg vælger høj til lav
-      else if (value === "high") {
-        // Samme her, bare omvendt rækkefølge
+      } else if (value === "high") {
         cards.sort((a, b) => Number(b.dataset.price) - Number(a.dataset.price));
+      } else {
+        cards.sort((a, b) => Number(a.dataset.id) - Number(b.dataset.id));
       }
 
-      // Løber alle kasserne igennem og smider dem ind i grid'et i den nye rækkefølge
       cards.forEach(card => grid.appendChild(card));
     });
   }
