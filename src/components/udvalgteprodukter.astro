@@ -87,4 +87,24 @@ import Button from './button.astro';
     font-weight: 400;
     letter-spacing: 2px;  /* Giver lidt luft mellem de store bogstaver */
     text-transform: uppercase;}
+
+@media (max-width: 768px) {
+  
+.product-grid {
+  grid-template-columns: 1fr;
+  padding: 0 20px;
+}
+
+h2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+}
+
 </style>
