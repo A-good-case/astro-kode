@@ -1,18 +1,21 @@
 ---
+//@ts-nocheck
 ---
 <header class="site-header">
   <nav class="nav-container">
 
-  <button class="burger-menu" aria-label="Menu">
+  <button class="burger" aria-label="Menu">
     <span class="bar"></span>
     <span class="bar"></span>
     <span class="bar"></span>
   </button>
     
     <div class="nav-section left">
+    <span class="desktop-links">
       <a href="/nyheder">Nyheder</a>
       <a href="/specialoel">Specialøl</a>
       <a href="/smagskasser">Smagskasser</a>
+    </span>
     </div>
 
     <div class="logo">
@@ -22,32 +25,30 @@
     </div>
 
     <div class="nav-section right">
+    <span class="desktop-links">
       <a href="/abonnementer">Abonnementer</a>
       <a href="/om-os">Om os</a>
       <a href="/erhverv">Erhverv</a>
-      <button class="cart-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cart-icon"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+    </span>
 
-</svg>
+
+      <button class="cart-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cart-icon"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
       </button>
     </div>
 
-
-
-
-  <div class="mobile-nav">
-    <button class="close-button"></button>
-    <nav class="mobile-links"></nav>
-    <a href="/nyheder">Nyheder</a>
-    <a href="/specialoel">Specialøl</a>
-    <a href="/smagskasser">Smagskasser</a>
-    <a href="/abonnementer">Abonnementer</a>
-    <a href="/om-os">Om os</a>
-    <a href="/erhverv">Erhverv</a>
-
-  </div>
-
   </nav>
+
+    <ul class="mobile-menu">
+    <li><a href="/nyheder">Nyheder</a></li>
+    <li><a href="/specialoel">Specialøl</a></li>
+    <li><a href="/smagskasser">Smagskasser</a></li>
+    <li><a href="/abonnementer">Abonnementer</a></li>
+    <li><a href="/om-os">Om os</a></li>
+    <li><a href="/erhverv">Erhverv</a></li>
+    </ul>
+
 </header>
 
 <style>
@@ -115,34 +116,31 @@
     height: 24px;
   }
 
-  .burger-menu, 
-  .mobile-nav {
+  .burger, 
+  .mobile-menu {
     display: none;
   }
 
+  .desktop-links  {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  }
+
+
 @media (max-width: 768px) {
 
-.nav-section.left,
-.nav-section.right {
+.desktop-links {
   display: none;
 }
 
-.nav-container {
-  justify-content: center;
-}
-
-.burger-menu,
-.nav-section.right {
-  flex: 1;
-}
-
-.burger-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: none;
-  border: none;
-  padding: 0;
+.burger {
+display: flex;
+flex-direction:column;
+gap: 6px;
+background: none;
+border: none;
+cursor: pointer;
 }
 
 .bar {
@@ -152,39 +150,94 @@
   border-radius: 10px;
 }
 
-.logo {
-  flex: 0;
+
+.nav-container {
   display: flex;
-  justify-content: center;
-}
-
-.logo img {
-  height: 60px;
-}
-
-.cart-btn {
-  margin-left: 0;
-}
-
-.cart-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.mobile-nav {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: #084734;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  display: none;
+  padding: 0 1.5rem;
 }
 
-.mobile-nav.is-open {
+.logo {
+  margin-right: 2rem;
+}
+
+
+.nav-section.right {
+  flex: 1;
   display: flex;
+  ustify-content: flex-end;
 }
 
+.mobile-menu {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background-color: #084734;
+z-index: 1000;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+list-style: none;
+padding: 0;
+margin: 0;
+gap: 2rem;
 }
 
+.mobile-menu.open {
+display: flex;
+}
+
+.mobile-menu a {
+color: white;
+text-decoration: none;
+font-size: 32px;
+}
+
+.burger-menu {
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.mobile-menu li {
+  margin: 1.5 rem 0;
+}
+
+.logo, 
+.burger {
+    position: relative;
+    z-index: 2000; 
+  }
+
+  .nav-container.active +
+  .mobile-menu {
+    display: flex;
+  }
+  
+  .mobile-menu li {
+    margin: 1rem 0;
+  }
+
+}
 </style>
+
+
+<script>
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".nav-container");
+
+  // Vi tjekker om elementerne findes før vi tilføjer event listeners
+  if (burger && nav) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("active");
+      nav.classList.toggle("active");
+      document.body.style.overflow = nav.classList.contains("active") ? "hidden" : "auto";
+    });
+  }
+</script>
