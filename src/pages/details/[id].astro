@@ -44,7 +44,7 @@ const { product } = Astro.props as any;
       <p class="category">{product.category}</p>
 
       <p class="price">{product.price} kr</p>
-      <p class="reason">Årsag: Kosmetisk fejl</p>
+      <p class="reason">{product.reason}</p>
 
       <div class="options">
         <label><input type="radio" name="amount" /> 1.stk</label>
