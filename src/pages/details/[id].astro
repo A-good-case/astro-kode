@@ -33,19 +33,22 @@ const { product } = Astro.props as any;
 
   <div class="container">
 
+    <!-- LEFT -->
     <div class="image">
       <img src={product.image} alt={product.name} />
     </div>
 
+    <!-- RIGHT -->
     <div class="info">
       <h1>{product.name}</h1>
       <p class="category">{product.category}</p>
+
       <p class="price">{product.price} kr</p>
       <p class="reason">Årsag: Kosmetisk fejl</p>
 
       <div class="options">
-        <label><input type="radio" /> 1.stk</label>
-        <label><input type="radio" /> 6.stk</label>
+        <label><input type="radio" name="amount" /> 1.stk</label>
+        <label><input type="radio" name="amount" /> 6.stk</label>
       </div>
 
       <div class="quantity">
@@ -54,30 +57,105 @@ const { product } = Astro.props as any;
         <button>-</button>
       </div>
 
-        <Button text="Læg i kurv" />
+      <Button text="Læg i kurv" />
     </div>
 
   </div>
 
 </section>
+
 </Layout>
 
 
 <style>
-    h1 {
-        font-family: sans-serif;
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-    }
-    
-    p {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
-    
-    img {
-        max-width: 400px;
-        margin-top: 20px;
-    }
+/* PAGE */
+.product-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
 
-    
+/* BACK LINK */
+.back {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+/* GRID LAYOUT (THIS FIXES YOUR ISSUE) */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* IMAGE */
+.image {
+  background: #3a3a3a;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.image img {
+  max-height: 400px;
+}
+
+/* INFO */
+.info {
+  max-width: 400px;
+}
+
+.info h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.category {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.reason {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* OPTIONS */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* QUANTITY */
+.quantity {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quantity button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  background: none;
+  font-size: 1.2rem;
+}
+
+.quantity span {
+  width: 60px;
+  text-align: center;
+}
+</style>
